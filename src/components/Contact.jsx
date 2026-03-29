@@ -18,17 +18,12 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
     try {
-      // TODO: Replace REPLACE_WITH_YOUR_FORM_ID with your actual Formspree form ID from formspree.io
       const response = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
         setSubmitted(true);
         setFormData({ name: '', email: '', description: '', timeline: 'exploring' });
@@ -36,136 +31,124 @@ export default function Contact() {
       } else {
         setError('Failed to send message. Please try again.');
       }
-    } catch (err) {
-      setError('An error occurred. Please check that the form ID is configured correctly.');
+    } catch {
+      setError('An error occurred. Please check your connection and try again.');
     }
   };
 
+  const inputBase =
+    'w-full bg-transparent border-b border-wood-muted/30 py-4 text-wood-text font-body text-[14px] placeholder:text-wood-muted/40 transition-all duration-500 focus:border-amber focus:outline-none';
+
   return (
-    <section id="contact" className="py-24 px-6 bg-wood-surface">
-      <div className="max-w-3xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 fade-in-on-scroll">
-          <h2 className="font-playfair text-heading font-bold text-wood-text mb-4">
-            Let's Discuss Your Project
-          </h2>
-          <p className="font-dm-sans text-wood-muted max-w-xl mx-auto">
-            Have an idea in mind? I'd love to hear about it. Fill out the form below and I'll get back to you within 24–48 hours.
-          </p>
-        </div>
+    <section id="contact" className="relative py-40 px-8 lg:px-16 bg-wood-surface">
+      <div className="max-w-[700px] mx-auto">
+        <p className="reveal font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
+          Start a Project
+        </p>
+        <h2
+          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-6"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
+        >
+          Get in Touch
+        </h2>
+        <p className="reveal stagger-2 font-body text-[14px] text-wood-muted leading-[1.8] mb-16 max-w-md">
+          Have something in mind? I would love to hear about it. Every project starts with a conversation.
+        </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6 fade-in-on-scroll">
-          {/* Name */}
-          <div>
-            <label htmlFor="name" className="block font-dm-sans text-sm font-medium text-wood-text mb-2">
-              Your Name
+        <form onSubmit={handleSubmit} className="space-y-10">
+          <div className="reveal stagger-2">
+            <label htmlFor="name" className="block font-body text-[10px] font-medium tracking-[0.25em] text-wood-muted/70 mb-2 uppercase">
+              Name
             </label>
             <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-wood-dark text-wood-text border border-amber-wood border-opacity-30 rounded focus:outline-none focus:border-amber-wood focus:border-opacity-100 transition-colors font-dm-sans"
-              placeholder="John Doe"
+              type="text" id="name" name="name" required
+              value={formData.name} onChange={handleChange}
+              className={inputBase} placeholder="Your name"
             />
           </div>
 
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="block font-dm-sans text-sm font-medium text-wood-text mb-2">
-              Email Address
+          <div className="reveal stagger-3">
+            <label htmlFor="email" className="block font-body text-[10px] font-medium tracking-[0.25em] text-wood-muted/70 mb-2 uppercase">
+              Email
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-wood-dark text-wood-text border border-amber-wood border-opacity-30 rounded focus:outline-none focus:border-amber-wood focus:border-opacity-100 transition-colors font-dm-sans"
-              placeholder="john@example.com"
+              type="email" id="email" name="email" required
+              value={formData.email} onChange={handleChange}
+              className={inputBase} placeholder="your@email.com"
             />
           </div>
 
-          {/* Project Description */}
-          <div>
-            <label htmlFor="description" className="block font-dm-sans text-sm font-medium text-wood-text mb-2">
-              Tell Me About Your Project
+          <div className="reveal stagger-4">
+            <label htmlFor="description" className="block font-body text-[10px] font-medium tracking-[0.25em] text-wood-muted/70 mb-2 uppercase">
+              Project Description
             </label>
             <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-              rows="5"
-              className="w-full px-4 py-3 bg-wood-dark text-wood-text border border-amber-wood border-opacity-30 rounded focus:outline-none focus:border-amber-wood focus:border-opacity-100 transition-colors font-dm-sans resize-none"
-              placeholder="Describe your vision, style preferences, space constraints, and any special requests..."
+              id="description" name="description" required rows="4"
+              value={formData.description} onChange={handleChange}
+              className={`${inputBase} resize-none`}
+              placeholder="Describe your vision, space, and any special requirements..."
             />
           </div>
 
-          {/* Timeline */}
-          <div>
-            <label htmlFor="timeline" className="block font-dm-sans text-sm font-medium text-wood-text mb-2">
-              Preferred Timeline
+          <div className="reveal stagger-5">
+            <label htmlFor="timeline" className="block font-body text-[10px] font-medium tracking-[0.25em] text-wood-muted/70 mb-2 uppercase">
+              Timeline
             </label>
             <select
-              id="timeline"
-              name="timeline"
-              value={formData.timeline}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-wood-dark text-wood-text border border-amber-wood border-opacity-30 rounded focus:outline-none focus:border-amber-wood focus:border-opacity-100 transition-colors font-dm-sans"
+              id="timeline" name="timeline"
+              value={formData.timeline} onChange={handleChange}
+              className={inputBase}
+              style={{ WebkitAppearance: 'none', appearance: 'none', cursor: 'pointer' }}
             >
-              <option value="asap">ASAP</option>
-              <option value="1-3-months">1–3 months</option>
-              <option value="3-6-months">3–6 months</option>
               <option value="exploring">Just exploring</option>
+              <option value="asap">As soon as possible</option>
+              <option value="1-3-months">1 to 3 months</option>
+              <option value="3-6-months">3 to 6 months</option>
             </select>
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-4 bg-amber-wood text-wood-dark font-dm-sans font-bold text-sm tracking-widest rounded hover:bg-amber-muted transition-all duration-300 hover:shadow-lg"
-          >
-            SEND MESSAGE
-          </button>
+          <div className="reveal stagger-6 pt-4">
+            <button
+              type="submit"
+              className="group flex items-center gap-4 py-4 bg-transparent border-b border-amber text-amber font-body text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-500 hover:text-wood-text hover:border-wood-text"
+            >
+              <span>Send message</span>
+              <span className="inline-block w-6 h-px bg-current transition-all duration-500 group-hover:w-10" />
+            </button>
+          </div>
 
-          {/* Success Message */}
           {submitted && (
-            <div className="p-4 bg-green-900 bg-opacity-30 border border-green-600 border-opacity-50 rounded text-green-200 font-dm-sans text-sm text-center">
-              ✓ Message sent! I'll be in touch soon.
+            <div className="py-4 border-b border-amber/30">
+              <p className="font-body text-[13px] text-amber">Message sent. I will be in touch within 24 to 48 hours.</p>
             </div>
           )}
 
-          {/* Error Message */}
           {error && (
-            <div className="p-4 bg-red-900 bg-opacity-30 border border-red-600 border-opacity-50 rounded text-red-200 font-dm-sans text-sm text-center">
-              {error}
+            <div className="py-4 border-b border-red-500/30">
+              <p className="font-body text-[13px] text-red-400">{error}</p>
             </div>
           )}
         </form>
 
-        {/* Footer Info */}
-        <div className="mt-16 pt-8 border-t border-amber-wood border-opacity-20 text-center fade-in-on-scroll">
-          <p className="font-dm-sans text-wood-muted text-sm mb-6">
-            Response within 24–48 hours. All projects start with a free consultation.
-          </p>
-          <div className="space-y-4">
-            <p className="font-dm-sans text-sm text-wood-text">
-              Connect on Instagram for more behind-the-scenes looks at the workshop:
+        <div className="reveal mt-24">
+          <div className="h-px w-full bg-amber/15 mb-10" />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <p className="font-body text-[13px] text-wood-muted">
+              Free consultation. Response within 48 hours.
             </p>
             <a
               href="https://www.instagram.com/r.a.c.woodworks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-amber-wood text-amber-wood rounded hover:bg-amber-wood hover:text-wood-dark transition-all duration-300 font-dm-sans font-medium text-sm"
+              target="_blank" rel="noopener noreferrer"
+              className="group flex items-center gap-3"
             >
-              <span>@r.a.c.woodworks</span>
-              <span>→</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-amber transition-colors duration-500 group-hover:text-wood-text">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" />
+                <circle cx="17.5" cy="6.5" r="1.5" />
+              </svg>
+              <span className="font-body text-[12px] tracking-[0.1em] text-amber transition-colors duration-500 group-hover:text-wood-text">
+                @r.a.c.woodworks
+              </span>
             </a>
           </div>
         </div>

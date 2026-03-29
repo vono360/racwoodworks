@@ -1,131 +1,91 @@
-import { useEffect } from 'react';
-
-const WorkshopSVG = () => (
-  <svg
-    viewBox="0 0 400 500"
-    className="w-full h-full max-w-md mx-auto"
-    style={{ opacity: 0.8 }}
-  >
-    {/* Workbench surface */}
-    <rect x="50" y="280" width="300" height="40" fill="#8b6914" />
-    <rect x="50" y="310" width="300" height="30" fill="#6b5210" opacity="0.6" />
-
-    {/* Workbench legs */}
-    <rect x="60" y="310" width="15" height="120" fill="#5a4a35" />
-    <rect x="325" y="310" width="15" height="120" fill="#5a4a35" />
-
-    {/* Vise */}
-    <circle cx="80" cy="270" r="20" fill="none" stroke="#c8882a" strokeWidth="3" />
-    <line x1="95" y1="270" x2="130" y2="270" stroke="#c8882a" strokeWidth="2" />
-
-    {/* Lumber stack */}
-    <rect x="200" y="180" width="50" height="120" fill="#a68a65" />
-    <rect x="220" y="175" width="50" height="120" fill="#8b7a55" />
-    <rect x="240" y="170" width="50" height="120" fill="#6b5a35" />
-
-    {/* Tool rack */}
-    <rect x="30" y="100" width="280" height="50" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.6" />
-
-    {/* Tools on rack - simple geometric shapes */}
-    <line x1="50" y1="100" x2="50" y2="150" stroke="#c8882a" strokeWidth="3" opacity="0.7" />
-    <circle cx="50" cy="90" r="8" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-
-    <line x1="100" y1="100" x2="100" y2="160" stroke="#c8882a" strokeWidth="3" opacity="0.7" />
-    <line x1="95" y1="165" x2="105" y2="165" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-
-    <polygon points="150,100 155,150 145,150" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-
-    <rect x="190" y="120" width="20" height="30" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-    <circle cx="200" cy="165" r="8" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-
-    <line x1="250" y1="110" x2="250" y2="140" stroke="#c8882a" strokeWidth="3" opacity="0.7" />
-    <circle cx="250" cy="100" r="10" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.7" />
-
-    {/* Window */}
-    <rect x="310" y="60" width="70" height="60" fill="none" stroke="#c8882a" strokeWidth="2" opacity="0.4" />
-    <line x1="345" y1="60" x2="345" y2="120" stroke="#c8882a" strokeWidth="1" opacity="0.3" />
-    <line x1="310" y1="90" x2="380" y2="90" stroke="#c8882a" strokeWidth="1" opacity="0.3" />
-
-    {/* Decorative text */}
-    <text x="200" y="420" textAnchor="middle" fill="#c8882a" fontSize="24" fontFamily="'Playfair Display'" opacity="0.6">
-      Craftsman's Space
-    </text>
-  </svg>
-);
-
 export default function About() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.fade-in-on-scroll').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="about" className="py-24 px-6 bg-wood-dark">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-playfair text-heading font-bold text-wood-text text-center mb-16 fade-in-on-scroll">
-          About
-        </h2>
-
-        {/* Split Layout */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: SVG Workshop */}
-          <div className="fade-in-on-scroll">
-            <WorkshopSVG />
+    <section id="about" className="relative py-0 bg-wood-dark overflow-hidden">
+      <div className="flex flex-col md:flex-row min-h-[700px]">
+        {/* Left half — tall wood grain panel */}
+        <div
+          className="relative w-full md:w-1/2 min-h-[350px] md:min-h-[700px]"
+          style={{
+            background: `
+              repeating-linear-gradient(88deg, transparent 0px, transparent 4px, rgba(139, 105, 20, 0.06) 4px, rgba(139, 105, 20, 0.06) 7px),
+              repeating-linear-gradient(2deg, transparent 0px, transparent 12px, rgba(200, 136, 42, 0.025) 12px, rgba(200, 136, 42, 0.025) 14px),
+              linear-gradient(170deg, #252017 0%, #2a2218 20%, #1f1a14 40%, #252017 60%, #2a2218 80%, #1f1a14 100%)
+            `,
+          }}
+        >
+          {/* Abstract hand plane SVG */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.22]">
+            <svg width="280" height="400" viewBox="0 0 280 400" fill="none" stroke="#c8882a" strokeWidth="1">
+              <rect x="60" y="140" width="160" height="45" rx="3" />
+              <line x1="140" y1="140" x2="140" y2="185" />
+              <rect x="120" y="110" width="40" height="30" rx="8" />
+              <line x1="138" y1="185" x2="138" y2="210" strokeWidth="2" />
+              <path d="M138,210 Q150,230 140,250 Q130,270 145,280" strokeWidth="1" />
+              <line x1="30" y1="320" x2="250" y2="320" />
+              <line x1="30" y1="325" x2="250" y2="325" />
+              <line x1="80" y1="325" x2="80" y2="380" />
+              <line x1="200" y1="325" x2="200" y2="380" />
+              <line x1="80" y1="352" x2="200" y2="352" />
+            </svg>
           </div>
 
-          {/* Right: Text */}
-          <div className="fade-in-on-scroll">
+          {/* Vertical text */}
+          <div className="absolute bottom-12 left-8 reveal-left">
+            <p
+              className="font-body text-[9px] tracking-[0.4em] text-wood-muted uppercase"
+              style={{ writingMode: 'vertical-rl' }}
+            >
+              Craftsman&apos;s Workshop
+            </p>
+          </div>
+        </div>
+
+        {/* Right half — text */}
+        <div className="w-full md:w-1/2 flex items-center">
+          <div className="px-8 lg:px-20 py-24 md:py-0 max-w-xl">
+            <p className="reveal font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
+              The Maker
+            </p>
+            <h2
+              className="reveal stagger-1 font-playfair font-bold text-wood-text mb-10"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
+            >
+              About R.A.C.
+            </h2>
+
             <div className="space-y-6">
-              <div>
-                <h3 className="font-playfair text-3xl font-bold text-amber-wood mb-4">
-                  Handcrafted with Purpose
-                </h3>
-                <p className="font-dm-sans text-wood-text leading-relaxed">
-                  R.A.C. Woodworks is a one-person custom woodworking shop based in the Chicago suburbs.
-                  Every piece is designed, cut, and finished by hand — no shortcuts, no flat-pack, no compromises.
-                </p>
-              </div>
+              <p className="reveal stagger-2 font-body text-[14px] text-wood-text/90 leading-[1.9]">
+                R.A.C. Woodworks is a one-person custom woodworking shop based in the Chicago suburbs.
+                Every piece is designed, cut, and finished by hand — no shortcuts, no flat-pack, no compromises.
+              </p>
 
-              <div>
-                <p className="font-dm-sans text-wood-text leading-relaxed">
-                  I work with sustainably sourced hardwoods whenever possible, selecting each board for its grain,
-                  figure, and character. Whether it's a dining table that will host a thousand memories or a
-                  custom bookcase that fits your space perfectly, every project gets the same attention to detail.
-                </p>
-              </div>
+              <p className="reveal stagger-3 font-body text-[14px] text-wood-muted leading-[1.9]">
+                I work with sustainably sourced hardwoods whenever possible, selecting each board
+                for its grain, figure, and character. Whether it is a dining table that will host a
+                thousand memories or a custom bookcase that fits your space perfectly, every project
+                receives the same attention to detail.
+              </p>
 
-              <div className="pt-6 border-t border-amber-wood border-opacity-20">
-                <h4 className="font-playfair text-lg font-bold text-wood-text mb-3">
+              <div className="reveal stagger-4 h-px w-16 bg-amber/30 my-8" />
+
+              <div className="reveal stagger-5">
+                <p className="font-body text-[10px] font-medium tracking-[0.3em] text-amber/70 mb-5 uppercase">
                   Why Work With Me
-                </h4>
-                <ul className="font-dm-sans text-sm text-wood-muted space-y-2">
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-wood mt-1">▪</span>
-                    <span>Direct communication throughout the process</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-wood mt-1">▪</span>
-                    <span>Hand-finished details and premium materials</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-wood mt-1">▪</span>
-                    <span>Custom design tailored to your space and style</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-wood mt-1">▪</span>
-                    <span>Timeless pieces built to last generations</span>
-                  </li>
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'Direct communication throughout the process',
+                    'Hand-finished details and premium materials',
+                    'Custom design tailored to your space',
+                    'Timeless pieces built to last generations',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="w-1 h-1 rounded-full bg-amber/60 mt-2 shrink-0" />
+                      <span className="font-body text-[13px] text-wood-muted leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

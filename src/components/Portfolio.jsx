@@ -1,116 +1,99 @@
-import { useEffect } from 'react';
-
-const PortfolioItem = ({ title, gradientBg, colSpan = 1 }) => {
-  return (
-    <div
-      className={`group relative h-64 rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 col-span-${colSpan}`}
-      style={{ background: gradientBg }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300" />
-
-      {/* Label */}
-      <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black via-black/80 to-transparent p-6">
-        <h3 className="font-playfair text-lg font-bold text-wood-text">{title}</h3>
-        <div className="h-1 w-12 bg-amber-wood mt-2 animate-in" />
-      </div>
-    </div>
-  );
-};
+const projects = [
+  {
+    title: 'Walnut Dining Table',
+    wood: 'Black Walnut',
+    description: 'Live-edge slab, hand-rubbed oil finish. Seats eight comfortably.',
+    gradient: 'linear-gradient(135deg, #4a3020 0%, #6a4538 35%, #5a3828 65%, #4a3020 100%)',
+    grain: 'repeating-linear-gradient(88deg, transparent 0px, transparent 3px, rgba(106, 69, 56, 0.5) 3px, rgba(106, 69, 56, 0.5) 5px)',
+  },
+  {
+    title: 'White Oak Bookcase',
+    wood: 'White Oak',
+    description: 'Floor-to-ceiling built-in. Quartersawn oak with visible ray fleck.',
+    gradient: 'linear-gradient(135deg, #6a6050 0%, #8a8070 35%, #7a7060 65%, #6a6050 100%)',
+    grain: 'repeating-linear-gradient(92deg, transparent 0px, transparent 4px, rgba(138, 128, 112, 0.45) 4px, rgba(138, 128, 112, 0.45) 6px)',
+  },
+  {
+    title: 'Cherry Entry Console',
+    wood: 'Cherry',
+    description: 'Narrow profile, dovetailed drawers. Finished to deepen with age.',
+    gradient: 'linear-gradient(135deg, #6a4538 0%, #8a5548 35%, #7a4d40 65%, #6a4538 100%)',
+    grain: 'repeating-linear-gradient(85deg, transparent 0px, transparent 3px, rgba(138, 85, 72, 0.45) 3px, rgba(138, 85, 72, 0.45) 5px)',
+  },
+  {
+    title: 'Maple Cutting Boards',
+    wood: 'Hard Maple',
+    description: 'End-grain construction. Food-safe mineral oil and beeswax finish.',
+    gradient: 'linear-gradient(135deg, #7a6a50 0%, #9a8a70 35%, #8a7a60 65%, #7a6a50 100%)',
+    grain: 'repeating-linear-gradient(90deg, transparent 0px, transparent 4px, rgba(154, 138, 112, 0.4) 4px, rgba(154, 138, 112, 0.4) 6px)',
+  },
+  {
+    title: 'Built-In Home Office',
+    wood: 'Dark Walnut',
+    description: 'Full wall system with floating desk, shelving, and hidden cable management.',
+    gradient: 'linear-gradient(135deg, #3a2f28 0%, #4a3f38 35%, #423528 65%, #3a2f28 100%)',
+    grain: 'repeating-linear-gradient(87deg, transparent 0px, transparent 3px, rgba(74, 63, 56, 0.5) 3px, rgba(74, 63, 56, 0.5) 5px)',
+  },
+  {
+    title: 'Live Edge Coffee Table',
+    wood: 'Elm',
+    description: 'Natural edge preserved. Butterfly keys stabilize a dramatic crack.',
+    gradient: 'linear-gradient(155deg, #5a4a3e 0%, #6a5a4e 30%, #4d4230 60%, #5a4a3e 100%)',
+    grain: 'repeating-linear-gradient(95deg, transparent 0px, transparent 5px, rgba(106, 90, 78, 0.4) 5px, rgba(106, 90, 78, 0.4) 8px), repeating-linear-gradient(175deg, transparent 0px, transparent 12px, rgba(77, 66, 48, 0.25) 12px, rgba(77, 66, 48, 0.25) 14px)',
+  },
+];
 
 export default function Portfolio() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.fade-in-on-scroll').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  const portfolioItems = [
-    {
-      title: 'Walnut Dining Table',
-      gradient: `
-        linear-gradient(135deg, #3d2817 0%, #2a1810 25%, #4a3220 50%, #2a1810 75%, #3d2817 100%),
-        repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(200, 136, 42, 0.1) 2px, rgba(200, 136, 42, 0.1) 4px),
-        linear-gradient(45deg, #1a1612, #252017)
-      `,
-    },
-    {
-      title: 'White Oak Bookcase',
-      gradient: `
-        linear-gradient(45deg, #4a4035 0%, #3d3428 25%, #5a5045 50%, #3d3428 75%, #4a4035 100%),
-        repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(139, 105, 20, 0.08) 1px, rgba(139, 105, 20, 0.08) 3px),
-        linear-gradient(180deg, #252017, #1a1612)
-      `,
-    },
-    {
-      title: 'Cherry Entry Console',
-      gradient: `
-        linear-gradient(110deg, #5a3a2e 0%, #3d2820 30%, #6a4a3e 60%, #3d2820 85%, #5a3a2e 100%),
-        repeating-linear-gradient(25deg, transparent 0px, transparent 3px, rgba(200, 136, 42, 0.06) 3px, rgba(200, 136, 42, 0.06) 6px),
-        linear-gradient(90deg, #1a1612, #252017)
-      `,
-    },
-    {
-      title: 'Maple Cutting Boards',
-      gradient: `
-        linear-gradient(75deg, #5a4a35 0%, #4a3a28 25%, #6a5a45 50%, #4a3a28 75%, #5a4a35 100%),
-        repeating-linear-gradient(45deg, transparent 0px, transparent 2px, rgba(139, 105, 20, 0.07) 2px, rgba(139, 105, 20, 0.07) 4px),
-        linear-gradient(270deg, #252017, #1a1612)
-      `,
-    },
-    {
-      title: 'Built-In Office',
-      gradient: `
-        linear-gradient(60deg, #3a2f28 0%, #2a1f18 20%, #4a3f38 40%, #2a1f18 60%, #3a2f28 100%),
-        repeating-linear-gradient(15deg, transparent 0px, transparent 1px, rgba(200, 136, 42, 0.05) 1px, rgba(200, 136, 42, 0.05) 3px),
-        linear-gradient(180deg, #1a1612, #252017)
-      `,
-    },
-    {
-      title: 'Live Edge Coffee Table',
-      gradient: `
-        linear-gradient(155deg, #4a3a2e 0%, #3d3220 25%, #5a4a3e 50%, #3d3220 75%, #4a3a2e 100%),
-        repeating-linear-gradient(120deg, transparent 0px, transparent 2px, rgba(200, 136, 42, 0.08) 2px, rgba(200, 136, 42, 0.08) 4px),
-        linear-gradient(45deg, #252017, #1a1612)
-      `,
-    },
-  ];
-
   return (
-    <section id="work" className="py-24 px-6 bg-wood-dark">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 fade-in-on-scroll">
-          <h2 className="font-playfair text-heading font-bold text-wood-text mb-4">
-            Recent Work
-          </h2>
-          <p className="font-dm-sans text-wood-muted max-w-2xl mx-auto">
-            Each piece tells a story. Here's a selection of recent projects.
-          </p>
-        </div>
+    <section id="work" className="relative py-40 bg-wood-dark">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
+        <p className="reveal font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
+          Selected Projects
+        </p>
+        <h2
+          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-24"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
+        >
+          Recent Work
+        </h2>
+      </div>
 
-        {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-max">
-          {portfolioItems.map((item, idx) => (
-            <div key={idx} className="fade-in-on-scroll">
-              <PortfolioItem
-                title={item.title}
-                gradientBg={item.gradient}
-                colSpan={idx === 2 ? 1 : 1}
-              />
+      <div className="space-y-1">
+        {projects.map((project, i) => {
+          const reversed = i % 2 !== 0;
+          return (
+            <div
+              key={project.title}
+              className="reveal w-full"
+              style={{ transitionDelay: `${i * 0.1}s` }}
+            >
+              <div className={`flex flex-col ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'} min-h-[200px]`}>
+                <div
+                  className="relative w-full md:w-[38%] min-h-[180px] md:min-h-[200px] overflow-hidden"
+                  style={{ background: `${project.grain}, ${project.gradient}` }}
+                >
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.04) 1px, rgba(0,0,0,0.04) 2px)' }}
+                  />
+                </div>
+                <div className={`flex-1 flex items-center bg-wood-surface/50 ${reversed ? 'md:justify-end' : 'md:justify-start'}`}>
+                  <div className={`px-8 lg:px-16 py-10 md:py-0 max-w-lg ${reversed ? 'md:text-right' : ''}`}>
+                    <p className="font-body text-[10px] font-medium tracking-[0.3em] text-amber/70 mb-3 uppercase">
+                      {project.wood}
+                    </p>
+                    <h3 className="font-playfair text-[22px] font-semibold text-wood-text tracking-wide mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="font-body text-[13px] text-wood-muted leading-[1.7]">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

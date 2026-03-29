@@ -42,14 +42,14 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-40 px-8 lg:px-16 bg-wood-dark">
+    <section className="relative py-20 md:py-40 px-6 md:px-8 lg:px-16 bg-wood-dark">
       <div className="max-w-[1100px] mx-auto">
-        <p className="reveal font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
+        <p className="reveal font-body text-[12px] md:text-[13px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
           What I Build
         </p>
         <h2
-          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-24"
-          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
+          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-12 md:mb-24"
+          style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
         >
           Services
         </h2>
@@ -70,11 +70,11 @@ export default function Services() {
                 </div>
                 <div className="flex items-start gap-5">
                   <div className="hidden md:block mt-1">{s.icon}</div>
-                  <h3 className="font-playfair text-[22px] font-semibold text-wood-text tracking-wide">
+                  <h3 className="font-playfair text-[24px] font-semibold text-wood-text tracking-wide">
                     {s.title}
                   </h3>
                 </div>
-                <p className="font-body text-[14px] text-wood-muted leading-[1.8] max-w-lg">
+                <p className="font-body text-[16px] text-wood-muted leading-[1.8] max-w-lg">
                   {s.description}
                 </p>
               </div>

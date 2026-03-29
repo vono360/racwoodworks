@@ -45,14 +45,14 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="work" className="relative py-40 bg-wood-dark">
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
-        <p className="reveal font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
+    <section id="work" className="relative py-20 md:py-40 bg-wood-dark">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
+        <p className="reveal font-body text-[12px] md:text-[13px] font-medium tracking-[0.35em] text-wood-muted mb-4 uppercase">
           Selected Projects
         </p>
         <h2
-          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-24"
-          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
+          className="reveal stagger-1 font-playfair font-bold text-wood-text mb-12 md:mb-24"
+          style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', letterSpacing: '0.03em' }}
         >
           Recent Work
         </h2>
@@ -69,7 +69,7 @@ export default function Portfolio() {
             >
               <div className={`flex flex-col ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'} min-h-[200px]`}>
                 <div
-                  className="relative w-full md:w-[38%] min-h-[180px] md:min-h-[200px] overflow-hidden"
+                  className="relative w-full md:w-[38%] min-h-[200px] md:min-h-[220px] overflow-hidden"
                   style={{ background: `${project.grain}, ${project.gradient}` }}
                 >
                   <div
@@ -78,14 +78,14 @@ export default function Portfolio() {
                   />
                 </div>
                 <div className={`flex-1 flex items-center bg-wood-surface/50 ${reversed ? 'md:justify-end' : 'md:justify-start'}`}>
-                  <div className={`px-8 lg:px-16 py-10 md:py-0 max-w-lg ${reversed ? 'md:text-right' : ''}`}>
-                    <p className="font-body text-[10px] font-medium tracking-[0.3em] text-amber/70 mb-3 uppercase">
+                  <div className={`px-6 md:px-8 lg:px-16 py-8 md:py-0 max-w-lg ${reversed ? 'md:text-right' : ''}`}>
+                    <p className="font-body text-[12px] font-medium tracking-[0.3em] text-amber/70 mb-3 uppercase">
                       {project.wood}
                     </p>
-                    <h3 className="font-playfair text-[22px] font-semibold text-wood-text tracking-wide mb-3">
+                    <h3 className="font-playfair text-[24px] font-semibold text-wood-text tracking-wide mb-3">
                       {project.title}
                     </h3>
-                    <p className="font-body text-[13px] text-wood-muted leading-[1.7]">
+                    <p className="font-body text-[16px] text-wood-muted leading-[1.7]">
                       {project.description}
                     </p>
                   </div>

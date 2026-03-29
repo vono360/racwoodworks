@@ -34,13 +34,13 @@ export default function Nav() {
         {/* Logo */}
         <button onClick={() => scrollTo('hero')} className="text-left group">
           <span
-            className="font-playfair text-[26px] font-bold tracking-[0.05em] text-wood-text transition-colors duration-500 group-hover:text-amber block"
+            className="font-playfair text-[24px] md:text-[26px] font-bold tracking-[0.05em] text-wood-text transition-colors duration-500 group-hover:text-amber block"
             style={{ lineHeight: 1 }}
           >
             R.A.C.
           </span>
           <span
-            className="font-body text-[9px] font-medium tracking-[0.4em] text-wood-muted mt-1 block uppercase"
+            className="font-body text-[11px] font-medium tracking-[0.4em] text-wood-muted mt-1 block uppercase"
           >
             Woodworks
           </span>
@@ -55,7 +55,7 @@ export default function Nav() {
               )}
               <button
                 onClick={() => scrollTo(link.id)}
-                className="hover-underline font-body text-[11px] font-medium tracking-[0.18em] text-wood-muted hover:text-wood-text transition-colors duration-500 uppercase"
+                className="hover-underline font-body text-[13px] font-medium tracking-[0.18em] text-wood-muted hover:text-wood-text transition-colors duration-500 uppercase"
               >
                 {link.label}
               </button>
@@ -86,7 +86,7 @@ export default function Nav() {
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="font-body text-[11px] font-medium tracking-[0.18em] text-wood-muted hover:text-wood-text transition-colors duration-500 text-left uppercase"
+              className="font-body text-[14px] font-medium tracking-[0.18em] text-wood-muted hover:text-wood-text transition-colors duration-500 text-left uppercase"
             >
               {link.label}
             </button>

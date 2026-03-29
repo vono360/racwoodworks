@@ -43,9 +43,9 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 py-40">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16 py-24 md:py-40">
         {/* Small label */}
-        <p className="font-body text-[10px] font-medium tracking-[0.35em] text-wood-muted mb-10 hero-reveal uppercase">
+        <p className="font-body text-[12px] md:text-[13px] font-medium tracking-[0.35em] text-wood-muted mb-8 md:mb-10 hero-reveal uppercase">
           Custom Woodwork — Chicago Area
         </p>
 
@@ -53,13 +53,13 @@ export default function Hero() {
         <h1 className="font-playfair font-bold text-wood-text leading-[1.05] mb-2">
           <span
             className="block hero-reveal"
-            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)', letterSpacing: '0.04em' }}
+            style={{ fontSize: 'clamp(2.2rem, 7vw, 6rem)', letterSpacing: '0.04em' }}
           >
             Built by hand.
           </span>
           <span
             className="block hero-reveal-delayed"
-            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)', letterSpacing: '0.04em' }}
+            style={{ fontSize: 'clamp(2.2rem, 7vw, 6rem)', letterSpacing: '0.04em' }}
           >
             Finished to last.
           </span>
@@ -69,7 +69,7 @@ export default function Hero() {
         <div className="h-px w-24 bg-amber hero-line mt-10 mb-10" />
 
         {/* Subtext */}
-        <p className="font-body text-[15px] text-wood-muted leading-relaxed max-w-md tracking-wide hero-reveal-delayed">
+        <p className="font-body text-[16px] md:text-[17px] text-wood-muted leading-relaxed max-w-md tracking-wide hero-reveal-delayed">
           Custom furniture and woodwork crafted with intention, from sustainably sourced hardwoods.
         </p>
 
@@ -79,7 +79,7 @@ export default function Hero() {
           className="mt-12 group flex items-center gap-4 hero-reveal-delayed"
           style={{ animationDelay: '0.9s' }}
         >
-          <span className="font-body text-[11px] font-medium tracking-[0.2em] text-amber uppercase transition-colors duration-500 group-hover:text-wood-text">
+          <span className="font-body text-[13px] font-medium tracking-[0.2em] text-amber uppercase transition-colors duration-500 group-hover:text-wood-text">
             View the work
           </span>
           <span className="w-8 h-px bg-amber transition-all duration-500 group-hover:w-12 group-hover:bg-wood-text" />
